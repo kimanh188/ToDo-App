@@ -1,0 +1,32 @@
+.app-container {
+  position: relative;
+  width: 26.75rem;
+  height: 57.875rem;
+  background-color: #ece4f2;
+}
+
+.footer-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: #6b3d81;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+  flex: 1;
+  text-decoration: none;
+  border-radius: 0.5em;
+  background-color: #9555b3;
+  padding: 1em;
+  text-align: center;
+  margin: 0.1rem;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #8ad2d7;
+  }
+}

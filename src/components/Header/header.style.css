@@ -1,0 +1,35 @@
+header {
+  padding: 1rem 2rem 1.5rem 0;
+  background-color: #8ad2d7;
+  min-height: 140px;
+  color: #6b3d81;
+  display: flex;
+  justify-content: space-between;
+
+  .welcome-heading {
+    padding-left: 1.3rem;
+  }
+
+  .hero-icons {
+    position: relative;
+
+    .icon {
+      position: absolute;
+    }
+
+    .icon1 {
+      height: 120px;
+      top: -10px;
+      right: -10px;
+      transform: rotate(15deg);
+    }
+
+    .icon2 {
+      height: 80px;
+      top: 35px;
+      right: 65px;
+      transform: rotate(-20deg);
+      opacity: 0.8;
+    }
+  }
+}
