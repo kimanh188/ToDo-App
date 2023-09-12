@@ -1,18 +1,9 @@
-.button-icon,
-.changeInput-btn {
+.button-icon {
   background-color: transparent;
   border: none;
 
   .img-inside {
     height: 45px;
     cursor: pointer;
-  }
-}
-
-.changeInput-btn {
-  margin-left: 0.5em;
-
-  .img-inside {
-    height: 0.8rem;
   }
 }

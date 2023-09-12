@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from "react";
+import "./todoItem.style.css";
+
 import { Button } from "../../../Button/buttonWithImg.component";
 
-export function TodoItem({ todo, setTodos }) {
-  const [focusedTodoId, setFocusedTodoId] = useState(null);
-
-  const isFocused = todo.id === focusedTodoId;
+export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
+  /* const [focused, setFocused] = useState(false); */
 
   const checkToggleHandler = (id, completed) => {
     setTodos((currentTodos) => {
@@ -19,6 +18,18 @@ export function TodoItem({ todo, setTodos }) {
     });
   };
 
+  //somehow onBlur doesn't work properly anymore (previously focused item remains focused even after a new item has been focused) so this alternative
+  /* const focusHandler = () => {
+    setFocused(!focused);
+
+    //get the item that the "focused" class will be removed from
+    const targetItem = document.querySelector(".focused");
+    if (targetItem) {
+      targetItem.classList.remove("focused");
+    }
+  }; */
+
+  //show the filtered list of todo which not contain the deleted item
   const deleteTodo = (id) => {
     setTodos((currentTodos) => {
       return currentTodos.filter((todo) => {
@@ -31,6 +42,7 @@ export function TodoItem({ todo, setTodos }) {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <li
       className={`todo-item ${isFocused ? "focused" : ""}`}
+      key={todo.id}
       onClick={() => setFocusedTodoId(todo.id)}
       onBlur={() => setFocusedTodoId(null)}
     >
@@ -50,7 +62,6 @@ export function TodoItem({ todo, setTodos }) {
 
       {isFocused && (
         <Button
-          className="button-icon"
           onClickHandler={() => {
             deleteTodo(todo.id);
           }}

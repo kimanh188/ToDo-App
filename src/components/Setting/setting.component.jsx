@@ -32,18 +32,6 @@ export function Setting() {
   return (
     <div className="form-container">
       <form className="setting-form" onSubmit={submitUserInputHandler}>
-        <label className="setting-label" htmlFor="userCity">
-          City
-        </label>
-        <input
-          className="userInput"
-          type="text"
-          name="userCity"
-          id="userCity"
-          placeholder={newCity || "Your city"}
-          onChange={onChangeCityHandler}
-        />
-
         <label className="setting-label" htmlFor="userName">
           Name
         </label>
@@ -54,6 +42,18 @@ export function Setting() {
           id="userName"
           placeholder={newName || "Your name"}
           onChange={onChangeNameHandler}
+        />
+
+        <label className="setting-label" htmlFor="userCity">
+          City
+        </label>
+        <input
+          className="userInput"
+          type="text"
+          name="userCity"
+          id="userCity"
+          placeholder={newCity || "Your city"}
+          onChange={onChangeCityHandler}
         />
 
         <button className="setting-btn" type="submit">

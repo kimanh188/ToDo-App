@@ -23,58 +23,8 @@ main {
       }
     }
   }
-}
 
-/* TodoList */
-.todo-list {
-  margin: 2rem auto;
-
-  .todo-item {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 1em;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    background-color: whitesmoke;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.31);
-
-    .img-inside {
-      height: 28px;
-    }
-
-    .completed-text {
-      color: #888;
-      text-decoration: line-through;
-    }
+  .todo-list {
+    margin: 2rem auto;
   }
-}
-
-label {
-  margin: 0.75em;
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-/* NewTodoForm */
-#newTodo {
-  padding: 1rem;
-  width: 100%;
-  border: none;
-  border-radius: 1em;
-  background-color: whitesmoke;
-  box-shadow: 6px 8px 15px 0px rgba(0, 0, 0, 0.31);
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.todo-item.focused {
-  border: 2px solid #72e7ee;
-}
-
-.todo-item.focused button {
-  display: inline-block;
 }

@@ -1,0 +1,12 @@
+#newTodo {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 1em;
+  background-color: whitesmoke;
+  box-shadow: 6px 8px 15px 0px rgba(0, 0, 0, 0.31);
+
+  &:focus {
+    outline: none;
+  }
+}

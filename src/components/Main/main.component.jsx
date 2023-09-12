@@ -5,33 +5,43 @@ import { NewTodoForm } from "./TodoList/NewTodo/newTodoForm.component";
 import { TodoItem } from "./TodoList/TodoItem/todoItem.component";
 
 export function Main() {
-  const [newTodo, setNewTodo] = useState("");
-  const [visibilityNewTodoForm, setVisibilityNewTodoForm] = useState(false);
-
+  //for the list of todos already have in app:
   const [todos, setTodos] = useState(() => {
+    //"get" the saved todos from localstorage or if nothing there then return empty array
     const storedTodos = localStorage.getItem("todos");
     if (storedTodos === null) return [];
+
     return JSON.parse(storedTodos); //need parse() to turn string (in local storage) into JS object
   });
+
+  //for todoItem which is focused (to display the delete icon)
+  const [focusedTodoId, setFocusedTodoId] = useState(null);
+
+  //for current text input value in newTodoForm:
+  const [newTodo, setNewTodo] = useState("");
+
+  //for show or hide input field to add newTodo (when user click + button)
+  const [showNewTodoForm, setShowNewTodoForm] = useState(false);
 
   // Save todos to local storage whenever they change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const onChangeHandler = (event) => {
+  const onChangeInputHandler = (event) => {
     setNewTodo(event.target.value);
   };
 
-  const onSubmitHandler = (event) => {
+  const addNewTodoHandler = (event) => {
     event.preventDefault();
+
     setTodos((currentTodos) => {
       return [
         ...currentTodos,
         { id: crypto.randomUUID(), title: newTodo, completed: false },
       ];
-    });
-    setNewTodo("");
+    }); //randomUUID(): generate random string 36-character long
+    setNewTodo(""); //make it blank
   };
 
   return (
@@ -43,32 +53,42 @@ export function Main() {
             {todos.filter((todo) => !todo.completed).length}
           </p>
         </div>
+
         <Button
-          className="button-icon"
           onClickHandler={() => {
-            setVisibilityNewTodoForm(!visibilityNewTodoForm);
+            setShowNewTodoForm(!showNewTodoForm);
           }}
           imgSource="circle_plus_icon.png"
         />
       </div>
 
-      {/* <TodoList /> */}
+      {/* TodoList: shows todoItem */}
       <ul className="todo-list">
-        {todos.length === 0 && "Feed me with your to-dos!"}
+        {todos.length === 0 ? "Feed me with your to-dos!" : null}
+        {/* null (not empty string) because nothing should be rendered if condition false */}
 
         {todos.map((todo) => {
-          return <TodoItem key={todo.id} todo={todo} setTodos={setTodos} />;
+          const isFocused = todo.id === focusedTodoId;
+          return (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              setTodos={setTodos}
+              isFocused={isFocused}
+              setFocusedTodoId={setFocusedTodoId}
+            />
+          );
         })}
       </ul>
 
-      {/* <NewTodoForm /> */}
-      {visibilityNewTodoForm && (
+      {/* NewTodoForm "pop  up" at the end of Todo list */}
+      {showNewTodoForm ? (
         <NewTodoForm
-          onSubmitHandler={onSubmitHandler}
-          onChangeHandler={onChangeHandler}
+          onSubmitHandler={addNewTodoHandler}
+          onChangeHandler={onChangeInputHandler}
           newTodo={newTodo}
         />
-      )}
+      ) : null}
     </main>
   );
 }
