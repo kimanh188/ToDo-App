@@ -7,7 +7,7 @@ export function WeatherComponent() {
   useEffect(() => {
     const weatherKey = "24f842938f574b9ea0f74414232508";
 
-    //"load" saved city to fetch data
+    //"call" saved city from localStorage to fetch data
     const savedUserCity = localStorage.getItem("userCity");
 
     fetch(
@@ -24,7 +24,7 @@ export function WeatherComponent() {
             />
             {resp.current.temp_c}°C, {resp.current.condition.text.toLowerCase()}
           </>
-        ); //put fragment here to handle error for retrieving data too when for example city name not correct
+        ); //put fragment here (instead of in return) to handle error for retrieving data too when for example city name not correct
         setWeatherData(resultWeather);
       })
       .catch((error) => {

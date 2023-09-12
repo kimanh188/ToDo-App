@@ -4,10 +4,10 @@ import "./todoItem.style.css";
 import { Button } from "../../../Button/buttonWithImg.component";
 
 export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
-  /* const [focused, setFocused] = useState(false); */
-
   const checkToggleHandler = (id, completed) => {
+    //iterate over todos: if id === id in argument -> update completed, otherwise leave todo unchanged
     setTodos((currentTodos) => {
+      //(instead of todos which is not in this component) currentTodos = parameter to make sure state up-to-date
       return currentTodos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, completed };
@@ -17,17 +17,6 @@ export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
       });
     });
   };
-
-  //somehow onBlur doesn't work properly anymore (previously focused item remains focused even after a new item has been focused) so this alternative
-  /* const focusHandler = () => {
-    setFocused(!focused);
-
-    //get the item that the "focused" class will be removed from
-    const targetItem = document.querySelector(".focused");
-    if (targetItem) {
-      targetItem.classList.remove("focused");
-    }
-  }; */
 
   //show the filtered list of todo which not contain the deleted item
   const deleteTodo = (id) => {

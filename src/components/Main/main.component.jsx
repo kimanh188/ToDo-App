@@ -69,6 +69,7 @@ export function Main() {
 
         {todos.map((todo) => {
           const isFocused = todo.id === focusedTodoId;
+
           return (
             <TodoItem
               key={todo.id}

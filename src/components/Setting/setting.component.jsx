@@ -23,7 +23,7 @@ export function Setting() {
   const onChangeCityHandler = (event) => setNewCity(event.target.value);
   const onChangeNameHandler = (event) => setNewName(event.target.value);
 
-  //saving current state of user inputs in local storage so we can call/"retrieve" them when mounting and in other components
+  //saving current state of user inputs in local storage so we can call/"retrieve" them when mounting or "call" in other components
   const submitUserInputHandler = () => {
     localStorage.setItem("userName", newName);
     localStorage.setItem("userCity", newCity);
