@@ -5,22 +5,21 @@ import { NewTodoForm } from "./TodoList/NewTodo/newTodoForm.component";
 import { TodoItem } from "./TodoList/TodoItem/todoItem.component";
 
 export function Main() {
-  //for the list of todos already have in app:
+  //useState for the list of todos. Initial state is saved todos from localstorage or empty array if nothing there:
   const [todos, setTodos] = useState(() => {
-    //"get" the saved todos from localstorage or if nothing there then return empty array
     const storedTodos = localStorage.getItem("todos");
     if (storedTodos === null) return [];
 
-    return JSON.parse(storedTodos); //need parse() to turn string (in local storage) into JS object
+    return JSON.parse(storedTodos); //turn string (in local storage) into JS object
   });
 
-  //for todoItem which is focused (to display the delete icon)
+  //useState for todoItem which is focused (to display the delete icon)
   const [focusedTodoId, setFocusedTodoId] = useState(null);
 
-  //for current text input value in newTodoForm:
+  //useState for current text input value in newTodoForm:
   const [newTodo, setNewTodo] = useState("");
 
-  //for show or hide input field to add newTodo (when user click + button)
+  //useState for show or hide input field to add newTodo (when user click + button)
   const [showNewTodoForm, setShowNewTodoForm] = useState(false);
 
   // Save todos to local storage whenever they change
@@ -65,7 +64,6 @@ export function Main() {
       {/* TodoList: shows todoItem */}
       <ul className="todo-list">
         {todos.length === 0 ? "Feed me with your to-dos!" : null}
-        {/* null (not empty string) because nothing should be rendered if condition false */}
 
         {todos.map((todo) => {
           const isFocused = todo.id === focusedTodoId;

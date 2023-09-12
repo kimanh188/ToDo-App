@@ -5,9 +5,8 @@ import { Button } from "../../../Button/buttonWithImg.component";
 
 export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
   const checkToggleHandler = (id, completed) => {
-    //iterate over todos: if id === id in argument -> update completed, otherwise leave todo unchanged
+    //iterate over todos: if id of a todo === id in argument -> update completed, otherwise leave the todo unchanged.
     setTodos((currentTodos) => {
-      //(instead of todos which is not in this component) currentTodos = parameter to make sure state up-to-date
       return currentTodos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, completed };
@@ -18,7 +17,6 @@ export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
     });
   };
 
-  //show the filtered list of todo which not contain the deleted item
   const deleteTodo = (id) => {
     setTodos((currentTodos) => {
       return currentTodos.filter((todo) => {
@@ -49,14 +47,14 @@ export function TodoItem({ todo, setTodos, isFocused, setFocusedTodoId }) {
         </span>
       </label>
 
-      {isFocused && (
+      {isFocused ? (
         <Button
           onClickHandler={() => {
             deleteTodo(todo.id);
           }}
           imgSource="trash_icon.png"
         />
-      )}
+      ) : null}
     </li>
   );
 }

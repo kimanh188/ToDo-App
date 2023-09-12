@@ -8,7 +8,7 @@ export function Header() {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    // Load user name from localStorage when the component mounts
+    // Retrieve user name from localStorage when the component mounts
     const savedUserName = localStorage.getItem("userName");
     if (savedUserName) {
       setUserName(savedUserName);

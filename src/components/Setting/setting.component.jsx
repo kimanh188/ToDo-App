@@ -6,7 +6,7 @@ export function Setting() {
   const [newCity, setNewCity] = useState("");
 
   useEffect(() => {
-    // Load user data from localStorage when the component mounts
+    // Retrieve user data from localStorage when the component mounts
     const savedUserName = localStorage.getItem("userName");
     const savedUserCity = localStorage.getItem("userCity");
 
@@ -19,11 +19,11 @@ export function Setting() {
     }
   }, []);
 
-  //update state when user types in <input>
+  //update state whenever user types in <input>
   const onChangeCityHandler = (event) => setNewCity(event.target.value);
   const onChangeNameHandler = (event) => setNewName(event.target.value);
 
-  //saving current state of user inputs in local storage so we can call/"retrieve" them when mounting or "call" in other components
+  //save new value in localStorage
   const submitUserInputHandler = () => {
     localStorage.setItem("userName", newName);
     localStorage.setItem("userCity", newCity);
@@ -40,7 +40,7 @@ export function Setting() {
           type="text"
           name="userName"
           id="userName"
-          placeholder={newName || "Your name"}
+          placeholder={newName || "Guest"}
           onChange={onChangeNameHandler}
         />
 
@@ -52,7 +52,7 @@ export function Setting() {
           type="text"
           name="userCity"
           id="userCity"
-          placeholder={newCity || "Your city"}
+          placeholder={newCity || "Munich"}
           onChange={onChangeCityHandler}
         />
 

@@ -7,11 +7,12 @@ export function WeatherComponent() {
   useEffect(() => {
     const weatherKey = "24f842938f574b9ea0f74414232508";
 
-    //"call" saved city from localStorage to fetch data
+    //retrieve saved city from localStorage to fetch data
     const savedUserCity = localStorage.getItem("userCity");
+    const city = savedUserCity || "Munich";
 
     fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${savedUserCity}`
+      `https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=${city}`
     )
       .then((resp) => resp.json())
       .then((resp) => {
@@ -24,7 +25,7 @@ export function WeatherComponent() {
             />
             {resp.current.temp_c}°C, {resp.current.condition.text.toLowerCase()}
           </>
-        ); //put fragment here (instead of in return) to handle error for retrieving data too when for example city name not correct
+        );
         setWeatherData(resultWeather);
       })
       .catch((error) => {
