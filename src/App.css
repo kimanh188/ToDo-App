@@ -1,8 +1,9 @@
 .app-container {
   position: relative;
-  width: 26.75rem;
-  height: 57.875rem;
+  width: 24rem;
+  height: 100vh;
   background-color: #ece4f2;
+  font-size: 0.8em;
 }
 
 .footer-nav {
@@ -28,5 +29,12 @@
 
   &:hover {
     background-color: #8ad2d7;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .app-container {
+    width: 26.75rem;
+    font-size: 1em;
   }
 }

@@ -8,10 +8,9 @@
 
 body {
   font-family: "Montserrat Alternates", sans-serif;
-  margin: 2rem 5rem;
+  margin: auto;
   background-color: #373632;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
