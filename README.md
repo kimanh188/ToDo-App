@@ -1,5 +1,7 @@
 # React + Vite Todo App
 
+[Screenshot](./public/image.png)
+
 ## Description
 
 This is my very first React project - a simple yet functional Todo App. The main features of the app include:
