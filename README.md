@@ -14,7 +14,7 @@ This is my very first React project - a simple yet functional Todo App. The main
 
 - **Settings**: Users can set their name and city in the settings to personalize the header.
 
-[Live Site](to-do-app1-one.vercel.app)
+[Live Site](https://to-do-app1-one.vercel.app)
 
 ## Technologies Used
 
