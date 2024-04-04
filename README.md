@@ -1,6 +1,5 @@
 # React + Vite Todo App
-
-[Screenshot](./public/image.png)
+![image](https://github.com/kimanh188/ToDo-App1/assets/125377158/8f8dee60-88c8-43e0-801c-a855b35455d4)
 
 ## Description
 
